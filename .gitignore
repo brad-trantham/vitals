@@ -1,4 +1,4 @@
-\.venv/
+venv/
 \.venv/bin/
 \.venv/lib/
 \.idea/
@@ -89,3 +89,5 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/pycharm
+
+*.pyc
