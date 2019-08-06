@@ -1,7 +1,17 @@
 import csv
 import matplotlib.pyplot as plt
 
+def extend_limit_list(limit, year):
+    new_limit = []
+    for i in range(0,len(year)):
+        new_limit.append(limit)
+    return new_limit
+
 file = '/Users/Brad/Vitals-Sheet1.csv'
+
+limits = {}
+limits['Weight'] = [200,240]
+limits['Total Cholesterol'] = [200,240]
 
 year = []
 weight = []
@@ -22,36 +32,37 @@ for row in reader:
     ldl.append(int(row['LDL']))
     vldl.append(int(row['VLDL']))
 
-plt.figure(figsize=(8,8))
 
-plt.subplot(611)
 plt.plot(year,weight)
+plt.plot(year, extend_limit_list(limits['Weight'][0],year), 'y')
+plt.plot(year, extend_limit_list(limits['Weight'][1], year), 'r')
 plt.locator_params(axis='x', nbins=5)
 plt.ylabel('Weight')
+plt.show()
 
-plt.subplot(612)
 plt.plot(year,total_chl)
+plt.plot(year, extend_limit_list(limits['Total Cholesterol'][0],year), 'y')
+plt.plot(year, extend_limit_list(limits['Total Cholesterol'][1], year), 'r')
 plt.ylabel('Total Cholesterol')
 plt.locator_params(axis='x', nbins=5)
+plt.show()
 
-plt.subplot(613)
 plt.plot(year,trig)
 plt.ylabel('Triglycerides')
 plt.locator_params(axis='x', nbins=5)
+plt.show()
 
-plt.subplot(614)
 plt.plot(year,hdl)
 plt.ylabel('HDL')
 plt.locator_params(axis='x', nbins=5)
+plt.show()
 
-plt.subplot(615)
 plt.plot(year,ldl)
 plt.ylabel('LDL')
 plt.locator_params(axis='x', nbins=5)
+plt.show()
 
-plt.subplot(616)
 plt.plot(year,vldl)
 plt.ylabel('VLDL')
 plt.locator_params(axis='x', nbins=5)
-
 plt.show()
